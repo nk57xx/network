@@ -16,13 +16,13 @@ resource "aws_ram_principal_association" "principal_association_sandbox_ou" {
 # Associate Private Subnets to RAM
 resource "aws_ram_resource_association" "private_subnets" {
   count              = length(var.private_subnets_cidr)
-  resource_arn       = aws_subnet.private[count.index].arn
+  resource_arn       = aws_subnet.private_subnets[count.index].arn
   resource_share_arn = aws_ram_resource_share.share_vpc_subnets.arn
 }
 
 # Associate Public Subnets to RAM
 resource "aws_ram_resource_association" "public_subnets" {
   count              = length(var.public_subnets_cidr)
-  resource_arn       = aws_subnet.public[count.index].arn
+  resource_arn       = aws_subnet.public_subnets[count.index].arn
   resource_share_arn = aws_ram_resource_share.share_vpc_subnets.arn
 }
