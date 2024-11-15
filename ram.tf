@@ -14,13 +14,13 @@ resource "aws_ram_principal_association" "principal_association_sandbox_ou" {
 }
 
 # Get amount of existing Private Subnets
-data "aws_subnet" "private_subnets" {
+data "aws_subnet" "private" {
   for_each = aws_subnet.private_subnets
   id       = each.value.id
 }
 
 # Get amount of existing Public Subnets
-data "aws_subnet" "private_subnets" {
+data "aws_subnet" "private" {
   for_each = aws_subnet.public_subnets
   id       = each.value.id
 }
