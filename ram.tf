@@ -3,7 +3,7 @@ resource "aws_ram_resource_share" "share_vpc_subnets" {
   name = var.ram_name
 
   tags = {
-    Name = "Network-RAM-share-vpc-subnets"
+    Name = "Network-RAM-share-for-vpc-subnets"
   }
 }
 
