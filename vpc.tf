@@ -47,6 +47,7 @@ resource "aws_internet_gateway" "igw" {
 # Route Table for Public Subnets
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.vpc.id
+  count  = length(var.public_subnets_cidr)
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -54,16 +55,17 @@ resource "aws_route_table" "public_rt" {
   }
 
   tags = {
-    Name = var.public_rt_name
+    Name = var.public_rt_name[count.index]
   }
 }
 
 # Route Table for Private Subnets  
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.vpc.id
+  count  = length(var.private_subnets_cidr)
 
   tags = {
-    Name = var.private_rt_name
+    Name = var.private_rt_name[count.index]
   }
 }
 

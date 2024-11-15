@@ -52,12 +52,12 @@ variable "igw_name" {
 
 variable "public_rt_name" {
   description = "Name of the Public Route Table"
-  type        = string
-  default     = "Network-Public-RT"
+  type        = list(string)
+  default     = ["Network-Public-RT-1", "Network-Public-RT-2"]
 }
 
 variable "private_rt_name" {
   description = "Name of the Private Route Table"
-  type        = string
-  default     = "Network-Private-RT"
+  type        = list(string)
+  default     = ["Network-Private-RT-1", "Network-Private-RT-2"]
 }
