@@ -61,3 +61,14 @@ variable "private_rt_name" {
   type        = list(string)
   default     = ["Network-Private-RT-1", "Network-Private-RT-2"]
 }
+
+variable "ram_name" {
+  description = "Name of the RAM"
+  type        = string
+  default     = "Network-RAM"
+}
+
+variable "ou_sandbox_arn" {
+  description = "ARN of the Sandbox OU"
+  type        = string
+}
