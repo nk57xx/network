@@ -1,0 +1,42 @@
+name: Network
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  # AWS_REGION: ${{ secrets.AWS_REGION }}
+  TF_TOKEN: ${{ secrets.TF_TOKEN }}
+  # AWS_IAM_ROLE: ${{ secrets.AWS_IAM_ROLE }}
+
+jobs:
+    Infra:
+        name: AWS VPC Deployment
+        runs-on: ubuntu-latest
+        steps:
+            - name: Repository Checkout
+              uses: actions/checkout@v4
+
+            - name: Terraform Workflow
+              uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: "1.9.7"
+                cli_config_credentials_token: ${{ env.TF_TOKEN }}     # API_TOKEN for Terrafom
+
+            - name: Terraform Init
+              id: init
+              run: terraform init
+
+            - name: Terraform Plan
+              id: plan
+              run: terraform plan
+
+            - name: Terraform Apply
+              id: apply
+              run: terraform apply -auto-approve
