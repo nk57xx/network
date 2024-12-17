@@ -1,6 +1,6 @@
 # Central VPC Deployment using Terraform
 
-[![Network](https://github.com/nk57xx/network/actions/workflows/deploy-vpc.yml/badge.svg)](https://github.com/nk57xx/network/actions/workflows/deploy-vpc.yml)
+[![Deploy-VPC](https://github.com/nk57xx/network/actions/workflows/deploy-vpc.yml/badge.svg)](https://github.com/nk57xx/network/actions/workflows/deploy-vpc.yml)
 
 This project uses the network account of the organization in AWS to create a centralized VPC with Terraform including four subnets (two public and two private subnets), corresponding route tables, route table associations and an internet gateway associated with the two public subnets.
 
